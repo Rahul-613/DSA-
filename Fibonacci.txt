@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+// Function to generate and display Fibonacci series
+void fibonacci(int n) {
+    int first = 0, second = 1, next;
+
+    printf("Fibonacci Series for %d terms: \n", n);
+
+    for (int i = 0; i < n; i++) {
+        printf("%d, ", first);
+        next = first + second;
+        first = second;
+        second = next;
+    }
+    printf("\n");
+}
+
+int main() {
+    int terms;
+
+    // Input the number of terms from the user
+    printf("Enter the number of terms for Fibonacci series: ");
+    scanf("%d", &terms);
+
+    // Check if the input is non-negative
+    if (terms < 0) {
+        printf("Please enter a non-negative number of terms.\n");
+    } else {
+        // Call the fibonacci function to generate and display the series
+        fibonacci(terms);
+    }
+
+    return 0;
+}

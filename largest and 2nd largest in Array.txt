@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void findLargestAndSecondLargest(int arr[], int size) {
+    if (size < 2) {
+        printf("Array should have at least two elements.\n");
+        return;
+    }
+
+    int largest = arr[0];
+    int secondLargest = arr[1];
+
+    if (secondLargest > largest) {
+        // Swap the values if necessary
+        int temp = largest;
+        largest = secondLargest;
+        secondLargest = temp;
+    }
+
+    for (int i = 2; i < size; i++) {
+        if (arr[i] > largest) {
+            // Current element is larger than the largest
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            // Current element is larger than the second largest, but not equal to the largest
+            secondLargest = arr[i];
+        }
+    }
+
+    printf("Largest Element: %d\n", largest);
+    printf("Second Largest Element: %d\n", secondLargest);
+}
+
+int main() {
+    int size;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    int arr[size];
+
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    findLargestAndSecondLargest(arr, size);
+
+    return 0;
+}

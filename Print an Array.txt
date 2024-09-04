@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    // Get the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    // Declare an array of size n
+    int arr[n];
+
+    // Get elements of the array from the user
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    // Print the elements of the array
+    printf("\nArray elements are:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}

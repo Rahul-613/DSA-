@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+#define MAX_ROWS 10
+#define MAX_COLS 10
+
+void readMatrix(int matrix[MAX_ROWS][MAX_COLS], int rows, int cols) {
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("Enter element [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+}
+
+void printMatrix(int matrix[MAX_ROWS][MAX_COLS], int rows, int cols) {
+    printf("Matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void multiplyMatrices(int mat1[MAX_ROWS][MAX_COLS], int mat2[MAX_ROWS][MAX_COLS], int result[MAX_ROWS][MAX_COLS], int rows1, int cols1, int rows2, int cols2) {
+    if (cols1 != rows2) {
+        printf("Matrix multiplication is not possible.\n");
+        return;
+    }
+
+    for (int i = 0; i < rows1; i++) {
+        for (int j = 0; j < cols2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < cols1; k++) {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int matrix1[MAX_ROWS][MAX_COLS];
+    int matrix2[MAX_ROWS][MAX_COLS];
+    int result[MAX_ROWS][MAX_COLS];
+    int rows1, cols1, rows2, cols2;
+
+    // Input for the first matrix
+    printf("Enter the number of rows and columns for the first matrix:\n");
+    scanf("%d %d", &rows1, &cols1);
+    readMatrix(matrix1, rows1, cols1);
+
+    // Input for the second matrix
+    printf("Enter the number of rows and columns for the second matrix:\n");
+    scanf("%d %d", &rows2, &cols2);
+    readMatrix(matrix2, rows2, cols2);
+
+    // Multiply matrices and print the result
+    multiplyMatrices(matrix1, matrix2, result, rows1, cols1, rows2, cols2);
+    if (cols1 == rows2) {
+        printf("Matrix multiplication result:\n");
+        printMatrix(result, rows1, cols2);
+    }
+
+    return 0;
+}

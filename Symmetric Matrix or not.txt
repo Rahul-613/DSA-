@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+int isSymmetric(int matrix[MAX_SIZE][MAX_SIZE], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] != matrix[j][i]) {
+                return 0; // Not symmetric
+            }
+        }
+    }
+    return 1; // Symmetric
+}
+
+int main() {
+    int matrix[MAX_SIZE][MAX_SIZE];
+    int rows, cols;
+
+    // Input the number of rows and columns
+    printf("Enter the number of rows and columns of the matrix: ");
+    scanf("%d %d", &rows, &cols);
+
+    // Input matrix elements
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    // Check if the matrix is symmetric
+    if (rows == cols && isSymmetric(matrix, rows, cols)) {
+        printf("The matrix is symmetric.\n");
+    } else {
+        printf("The matrix is not symmetric.\n");
+    }
+
+    return 0;
+}

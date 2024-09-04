@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    // Declare variables to store temperature in Celsius and Fahrenheit
+    float celsius, fahrenheit;
+
+    // Prompt the user to enter temperature in Celsius
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+
+    // Convert Celsius to Fahrenheit using the formula: F = (C * 9/5) + 32
+    fahrenheit = (celsius * 9 / 5) + 32;
+
+    // Display the result
+    printf("%.2f degrees Celsius is equal to %.2f degrees Fahrenheit\n", celsius, fahrenheit);
+
+    return 0;
+}
